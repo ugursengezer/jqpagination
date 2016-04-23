@@ -1,0 +1,79 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+ 
+ 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>M. Ugurcan Sengezer</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript">
+	
+
+
+$(function(){
+
+
+var toplamLi = $("ul#liste li").size();
+
+var veriSayisi=2;
+
+$("ul#liste li:gt(" + (veriSayisi - 1) + ")").hide();
+
+var sayfaSayisi = Math.ceil(toplamLi / veriSayisi);
+
+for (var i = 1; i <= sayfaSayisi; i++) {
+	$("#sayfalama").append('<a href="javascript:void(0)">' + i + '</a>');
+}
+
+
+$("#sayfalama a:first").addClass("aktif");
+
+$("#sayfalama a").on("click", function(){
+	var indis = $(this).index() + 1;
+	var gt = veriSayisi * indis;
+	$("#sayfalama a").removeClass("aktif");
+	$(this).addClass("aktif");
+	$("ul#liste li").hide();
+	for (i = gt - veriSayisi; i < gt; i++) {
+		$("ul#liste li:eq(" + i + ")").show();
+	}
+
+});
+
+});
+</script> 
+
+<style type="text/css">
+	body{margin: auto; font: 12px Arial;}
+	ul, li{margin:0; padding: 0; list-style-type: none}
+	ul#liste {padding: 20px}
+	ul#liste li {background: #eee; padding: 5px; border-bottom: 1px solid #ddd;}
+	#sayfalama{padding: 0 20px 20px 20px;}
+	#sayfalama a {color: #fff; background: #333; padding: 3px 7px; margin-right: 9px; text-decoration: none}
+	#sayfalama a.aktif {background: red}
+</style>
+
+ </head>
+ <body>
+
+<ul id="liste">
+	<li>1. li İçeriği </li>
+	<li>2. li İçeriği </li>
+	<li>3. li İçeriği </li>
+	<li>4. li İçeriği </li>
+	<li>5. li İçeriği </li>
+	<li>6. li İçeriği </li>
+	<li>7. li İçeriği </li>
+	<li>8. li İçeriği </li>
+	<li>9. li İçeriği </li>
+	<li>10. li İçeriği </li>
+	<li>11. li İçeriği </li>
+	<li>12. li İçeriği </li>
+	<li>13. li İçeriği </li>
+	<li>14. li İçeriği </li>
+
+</ul>
+
+<div id="sayfalama"></div>
+ 
+ </body>
+ </html>
